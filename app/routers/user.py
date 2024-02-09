@@ -40,6 +40,6 @@ async def add_label_image(file_image: UploadFile, request: schemas.AddLabelImage
 async def update_label_image(file_image: UploadFile, request: schemas.UpdateLabelImage= Depends(), db: Session= Depends(get_db), current_user: schemas.UserLogin= Depends(oauth2.get_current_user)):
     return await user.update_label_image(request, file_image, current_user.username, db)
 
-@router.post('/replace-label-image', status_code= status.HTTP_201_CREATED)
-async def replace_label_image(file_image: UploadFile, request: schemas.ReplaceLabelImage= Depends(), db: Session= Depends(get_db), current_user: schemas.UserLogin= Depends(oauth2.get_current_user)):
-    return await user.replace_label_image(request, file_image, current_user.username, db)
+# @router.post('/replace-label-image', status_code= status.HTTP_201_CREATED)
+# async def replace_label_image(file_image: UploadFile, request: schemas.ReplaceLabelImage= Depends(), db: Session= Depends(get_db), current_user: schemas.UserLogin= Depends(oauth2.get_current_user)):
+#     return await user.replace_label_image(request, file_image, current_user.username, db)
