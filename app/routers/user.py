@@ -32,7 +32,7 @@ async def scan_label_image(file_image: UploadFile, db: Session= Depends(get_db),
     return await user.scan_label_image(file_image, current_user.username, db)
 
 @router.post('/add-label-image', status_code= status.HTTP_201_CREATED)
-async def add_label_image(file_image: UploadFile, request: schemas.UpdateLabelImage= Depends(), db: Session= Depends(get_db), current_user: schemas.UserLogin= Depends(oauth2.get_current_user)):
+async def add_label_image(file_image: UploadFile, request: schemas.AddLabelImage= Depends(), db: Session= Depends(get_db), current_user: schemas.UserLogin= Depends(oauth2.get_current_user)):
     return await user.add_label_image(request, file_image, current_user.username, db)
 
 

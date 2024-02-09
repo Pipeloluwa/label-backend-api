@@ -61,22 +61,31 @@ class SendMail(BaseModel):
 
 
 class UsersBase(BaseModel):
-    id: int
     activated: str
+    id: int
     username: str
-    firstname: str
-    lastname: str
     email: str
-    phone_no: str
-    # password: str
     registration_date: str
+    # id: int
+    # activated: str
+    # username: str
+    # firstname: str
+    # lastname: str
+    # email: str
+    # phone_no: str
+    # # password: str
+    # registration_date: str
 
     class Config():
         from_attributes= True
 
 class ImagesBase(BaseModel):
     id: int
-    label: str
+    brand: str
+    product: str
+    supplier: str
+    expiry_date: str
+
     ingredient: str
     image_path: str
 
@@ -86,7 +95,7 @@ class ImagesBase(BaseModel):
 
 class ImageLabels(BaseModel):
     id: int
-    label: str
+    brand: str
 
     user_id: int
     images: List[ImagesBase]
@@ -101,7 +110,7 @@ class Images(ImagesBase):
 
 class ImageLabelsBase(BaseModel):
     id: int
-    label: str
+    brand: str
 
     images: List[ImagesBase]
     class Config():
@@ -130,12 +139,18 @@ class TokenDataUser(BaseModel):
 
 
 # class UploadLabel(BaseModel):
-#     label: str
+#     brand: str
 #     # ingredient: str
 
+class AddLabelImage(BaseModel):
+    brand: str
+    product: str
+    supplier: str
+    expiry_date: str
+    ingredient: str
+
 class UpdateLabelImage(BaseModel):
-    label_id: Optional[int]= None
-    label: str
+    id: Optional[int]= None
     ingredient: str
 
 class ReplaceLabelImage(BaseModel):

@@ -33,7 +33,7 @@ class Users(Base):
 class ImageLabels(Base):
     __tablename__ = "image_labels"
     id = Column(Integer, primary_key=True, index=True)
-    label = Column(String)
+    brand = Column(String)
 
     images= relationship("Images", back_populates="image_label")
     user_id= Column(Integer, ForeignKey('users.id'))
@@ -42,7 +42,11 @@ class ImageLabels(Base):
 class Images(Base):
     __tablename__ = "images"
     id = Column(Integer, primary_key=True, index=True)
-    label = Column(String)
+    brand = Column(String)
+    product = Column(String)
+    supplier = Column(String)
+    expiry_date = Column(String)
+
     ingredient = Column(String)
     image_path= Column(String)
 
